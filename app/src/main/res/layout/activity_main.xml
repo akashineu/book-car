@@ -83,7 +83,8 @@
             android:hint="@string/mobile_no_hint"
             android:inputType="phone"
             android:padding="5dp"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:autofillHints="phone"/>
     </LinearLayout>
 
     <Button
