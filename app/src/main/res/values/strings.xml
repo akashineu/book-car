@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Book Car</string>
+    <string name="enter_phone_number">Enter your phone number</string>
+    <string name="will_verfication_code">We\'ll send you a text verification code.</string>
+    <string name="enter_phone_number_title">Enter Phone Number</string>
+    <string name="mobile_number">Mobile number</string>
+    <string name="mobile_no_hint">Enter your number</string>
+    <string name="country_code">+91</string>
+    <string name="continue_text">CONTINUE</string>
 </resources>
