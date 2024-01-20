@@ -100,6 +100,24 @@
             android:ems="10"
             android:inputType="number" />
 
+        <EditText
+            android:id="@+id/editTextNumberOtp5"
+            style="@style/otp_number_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/editTextNumberOtp6"
+            style="@style/otp_number_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="number" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -114,7 +132,6 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <ImageView
-            android:id="@+id/imageView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/horizontal_margin_5dp"
@@ -123,7 +140,6 @@
             app:srcCompat="@drawable/voilet_rectangle" />
 
         <ImageView
-            android:id="@+id/imageView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/horizontal_margin_5dp"
@@ -132,7 +148,6 @@
             app:srcCompat="@drawable/voilet_rectangle" />
 
         <ImageView
-            android:id="@+id/imageView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/horizontal_margin_5dp"
@@ -141,7 +156,22 @@
             app:srcCompat="@drawable/voilet_rectangle" />
 
         <ImageView
-            android:id="@+id/imageView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/horizontal_margin_5dp"
+            android:layout_weight="1"
+            android:padding="@dimen/padding_4dp"
+            app:srcCompat="@drawable/voilet_rectangle" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/horizontal_margin_5dp"
+            android:layout_weight="1"
+            android:padding="@dimen/padding_4dp"
+            app:srcCompat="@drawable/voilet_rectangle" />
+
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/horizontal_margin_5dp"

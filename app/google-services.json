@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "843889074509",
+    "project_id": "book-car-79762",
+    "storage_bucket": "book-car-79762.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:843889074509:android:67de87e01f43063069d704",
+        "android_client_info": {
+          "package_name": "com.akash.bookcar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdAZeSnDY1hLKGP1s2tZTGgn7MPrrfI_4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
