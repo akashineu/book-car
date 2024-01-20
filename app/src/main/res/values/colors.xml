@@ -6,4 +6,5 @@
     <color name="light_grey_color">#F1EDF3</color>
     <color name="button_background_color">#D650ED</color>
     <color name="background_color_two">#F9F9F9</color>
+    <color name="background_color_three">#FEFEFE</color>
 </resources>
