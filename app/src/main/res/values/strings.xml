@@ -7,4 +7,9 @@
     <string name="mobile_no_hint">Enter your number</string>
     <string name="country_code">+91</string>
     <string name="continue_text">CONTINUE</string>
+    <string name="verify_code">Verify Code</string>
+    <string name="enter_code">Enter Code</string>
+    <string name="type_verification_code">Please type the verification code \nsent to +91 1234567890</string>
+    <string name="number_two">2</string>
+    <string name="number_six">6</string>
 </resources>
