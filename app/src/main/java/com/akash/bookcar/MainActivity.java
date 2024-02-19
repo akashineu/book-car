@@ -1,20 +1,20 @@
 package com.akash.bookcar;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.akash.bookcar.booking.HomeRecycler;
+import com.akash.bookcar.login.OtpVerificationActivity;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.FirebaseTooManyRequestsException;
 import com.google.firebase.auth.FirebaseAuth;
@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,102 +52,103 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        if (mAuth.getCurrentUser() != null) {
+            startActivity(new Intent(MainActivity.this, HomeRecycler.class));
+            finish();
+        } else {
 
-        mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
-            @Override
-            public void onVerificationCompleted(@NonNull PhoneAuthCredential credential) {
-                // This callback will be invoked in two situations:
-                // 1 - Instant verification. In some cases the phone number can be instantly
-                //     verified without needing to send or enter a verification code.
-                // 2 - Auto-retrieval. On some devices Google Play services can automatically
-                //     detect the incoming verification SMS and perform verification without
-                //     user action.
-                Log.d(TAG, "onVerificationCompleted:" + credential);
+            mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
-                mAuth.signInWithCredential(credential);
-            }
+                @Override
+                public void onVerificationCompleted(@NonNull PhoneAuthCredential credential) {
+                    // This callback will be invoked in two situations:
+                    // 1 - Instant verification. In some cases the phone number can be instantly
+                    //     verified without needing to send or enter a verification code.
+                    // 2 - Auto-retrieval. On some devices Google Play services can automatically
+                    //     detect the incoming verification SMS and perform verification without
+                    //     user action.
+                    Log.d(TAG, "onVerificationCompleted:" + credential);
 
-            @Override
-            public void onVerificationFailed(@NonNull FirebaseException e) {
-                // This callback is invoked in an invalid request for verification is made,
-                // for instance if the the phone number format is not valid.
-                Log.w(TAG, "onVerificationFailed", e);
-                String error = "";
-                if (e instanceof FirebaseAuthInvalidCredentialsException) {
-                    // Invalid request
-                    error = "FirebaseAuthInvalidCredentialsException";
-                    Log.e(TAG, "onVerificationFailed: " + error);
-                } else if (e instanceof FirebaseTooManyRequestsException) {
-                    error = "FirebaseTooManyRequestsException";
-                    Log.e(TAG, "onVerificationFailed: " + error);
-                    // The SMS quota for the project has been exceeded
-                } else if (e instanceof FirebaseAuthMissingActivityForRecaptchaException) {
-                    error = "FirebaseAuthMissingActivityForRecaptchaException";
-                    Log.e(TAG, "onVerificationFailed: " + error);
-                    // reCAPTCHA verification attempted with null Activity
+                    mAuth.signInWithCredential(credential);
                 }
 
-                // Show a message and update the UI
-                Toast.makeText(MainActivity.this, error, Toast.LENGTH_SHORT).show();
-            }
+                @Override
+                public void onVerificationFailed(@NonNull FirebaseException e) {
+                    // This callback is invoked in an invalid request for verification is made,
+                    // for instance if the the phone number format is not valid.
+                    Log.w(TAG, "onVerificationFailed", e);
+                    String error = "";
+                    if (e instanceof FirebaseAuthInvalidCredentialsException) {
+                        // Invalid request
+                        error = "FirebaseAuthInvalidCredentialsException";
+                        Log.e(TAG, "onVerificationFailed: " + error);
+                    } else if (e instanceof FirebaseTooManyRequestsException) {
+                        error = "FirebaseTooManyRequestsException";
+                        Log.e(TAG, "onVerificationFailed: " + error);
+                        // The SMS quota for the project has been exceeded
+                    } else if (e instanceof FirebaseAuthMissingActivityForRecaptchaException) {
+                        error = "FirebaseAuthMissingActivityForRecaptchaException";
+                        Log.e(TAG, "onVerificationFailed: " + error);
+                        // reCAPTCHA verification attempted with null Activity
+                    }
 
-            @Override
-            public void onCodeSent(@NonNull String verificationId,
-                                   @NonNull PhoneAuthProvider.ForceResendingToken token) {
-                // The SMS verification code has been sent to the provided phone number, we
-                // now need to ask the user to enter the code and then construct a credential
-                // by combining the code with a verification ID.
-                Log.d(TAG, "onCodeSent:" + verificationId);
-
-                // Save verification ID and resending token so we can use them later
-                mVerificationId = verificationId;
-                //mResendToken = token;
-                Toast.makeText(MainActivity.this, "Code Sent", Toast.LENGTH_SHORT).show();
-
-            }
-        };
-
-        editTextPhone.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if(s.length() != 10){
-                    buttonContinue.setEnabled(false);
-                }else{
-                    buttonContinue.setEnabled(true);
+                    // Show a message and update the UI
+                    Toast.makeText(MainActivity.this, error, Toast.LENGTH_SHORT).show();
                 }
-            }
-        });
-        buttonContinue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                String userPhoneNumber = "+91 " + editTextPhone.getText().toString().trim();
+                @Override
+                public void onCodeSent(@NonNull String verificationId, @NonNull PhoneAuthProvider.ForceResendingToken token) {
+                    // The SMS verification code has been sent to the provided phone number, we
+                    // now need to ask the user to enter the code and then construct a credential
+                    // by combining the code with a verification ID.
+                    Log.d(TAG, "onCodeSent:" + verificationId);
 
-                // Send a verification code to the user's phone
-                PhoneAuthOptions options =
-                        PhoneAuthOptions.newBuilder(mAuth)
-                                .setPhoneNumber(userPhoneNumber)       // Phone number to verify
-                                .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
-                                .setActivity(MainActivity.this)                 // (optional) Activity for callback binding
-                                // If no activity is passed, reCAPTCHA verification can not be used.
-                                .setCallbacks(mCallbacks)          // OnVerificationStateChangedCallbacks
-                                .build();
-                PhoneAuthProvider.verifyPhoneNumber(options);
+                    // Save verification ID and resending token so we can use them later
+                    mVerificationId = verificationId;
+                    //mResendToken = token;
+                    Toast.makeText(MainActivity.this, "Code Sent", Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(MainActivity.this, OtpVerificationActivity.class);
-                startActivity(intent);
-            }
-        });
+                }
+            };
+
+            editTextPhone.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    buttonContinue.setEnabled(s.length() == 10);
+                }
+            });
+            buttonContinue.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    String userPhoneNumber = "+91 " + editTextPhone.getText().toString().trim();
+
+                    // Send a verification code to the user's phone
+                    PhoneAuthOptions options = PhoneAuthOptions.newBuilder(mAuth).setPhoneNumber(userPhoneNumber)       // Phone number to verify
+                            .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
+                            .setActivity(MainActivity.this)                 // (optional) Activity for callback binding
+                            // If no activity is passed, reCAPTCHA verification can not be used.
+                            .setCallbacks(mCallbacks)          // OnVerificationStateChangedCallbacks
+                            .build();
+                    PhoneAuthProvider.verifyPhoneNumber(options);
+
+                    Intent intent = new Intent(MainActivity.this, OtpVerificationActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+
+        }
     }
 }

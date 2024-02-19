@@ -7,4 +7,14 @@
     <dimen name="line_space_extra_5sp">5sp</dimen>
     <dimen name="text_size_50sp">50sp</dimen>
     <dimen name="horizontal_margin_5dp">5dp</dimen>
+    <dimen name="text_size_18sp">18sp</dimen>
+    <dimen name="corner_radious_5dp">5dp</dimen>
+    <dimen name="book_now_button_width">140dp</dimen>
+    <dimen name="margin_15dp">15dp</dimen>
+    <dimen name="corner_radious_12dp">12dp</dimen>
+    <dimen name="imageViewHeight_233dp">233dp</dimen>
+    <dimen name="padding_16dp">16dp</dimen>
+    <dimen name="line_spacing_extra_3sp">3sp</dimen>
+    <item name="letter_spacing" type="dimen" format="float">0.15</item>
+    <item name="letter_spacing_11" type="dimen" format="float">.11</item>
 </resources>

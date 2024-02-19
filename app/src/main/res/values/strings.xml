@@ -14,4 +14,16 @@
     <string name="number_six">6</string>
     <string name="sucess_text">Success!!!</string>
     <string name="congratulation_message">Congratulations! You have been \nsuccessfully authenticated</string>
+    <string name="car">Car</string>
+    <string name="car_name">Benz C-Class</string>
+    <string name="rate">Rs. 2000/day</string>
+    <string name="rating_text">4.8(180 rating)</string>
+    <string name="book_now">Book Now</string>
+    <string name="details">Details</string>
+    <string name="about_car">About Car</string>
+    <string name="about_bmw">BMW, a German luxury automobile manufacturer, is renowned for crafting high-performance vehicles with sleek designs and cutting-edge technology. From precision engineering to dynamic driving experiences, BMW consistently delivers a blend of luxury and performance, setting the standard in the automotive industry.</string>
+    <string name="features">Features</string>
+    <string name="air_conditioning">Air Conditioning</string>
+    <string name="persons">4 Persons</string>
+    <string name="auto_stearing">Auto Stearing</string>
 </resources>

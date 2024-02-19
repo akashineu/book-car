@@ -7,4 +7,6 @@
     <color name="button_background_color">#D650ED</color>
     <color name="background_color_two">#F9F9F9</color>
     <color name="background_color_three">#FEFEFE</color>
+    <color name="blue">#4E67F3</color>
+    <color name="grey">#5A5959</color>
 </resources>

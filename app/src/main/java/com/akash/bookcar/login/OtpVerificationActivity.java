@@ -1,4 +1,4 @@
-package com.akash.bookcar;
+package com.akash.bookcar.login;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.akash.bookcar.MainActivity;
+import com.akash.bookcar.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -185,6 +187,7 @@ public class OtpVerificationActivity extends AppCompatActivity {
                             // Update UI
                             Intent intent = new Intent(OtpVerificationActivity.this, AuthSuccessActivity.class);
                             startActivity(intent);
+                            finish();
                         } else {
                             // Sign in failed, display a message and update the UI
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
